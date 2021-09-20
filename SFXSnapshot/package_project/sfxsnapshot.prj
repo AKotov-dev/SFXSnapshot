@@ -11,9 +11,10 @@ release=0.mrx8
 group=Applications/File
 
 [DESCRIPTION]
-0=Creating SFX snapshots of files and folders
-1=---
-2=More information: /usr/share/doc/package_name/repack.txt
+0=The program works with the "makeself" script and uses "zstd" compression
+1=makeself: https://github.com/megastep/makeself
+2=---
+3=More information: /usr/share/doc/package_name/repack.txt
 
 [MAINTAINER]
 maintainer=Alex Kotov
@@ -31,7 +32,7 @@ urlcopy=https://github.com/AKotov-dev/SFXSnapshot
 license=GPLv3
 
 [DEPS]
-deps=
+deps=zstd sakura
 
 [META]
 meta=0
@@ -69,3 +70,5 @@ toolversion=2.0.10
 
 [INFO]
 0=Creating SFX snapshots of files and folders
+1=The program works with the "makeself" script and uses "zstd" compression
+2=makeself: https://github.com/megastep/makeself
