@@ -12,6 +12,10 @@ msgstr ""
 "Language: ru\n"
 "X-Generator: Poedit 2.4.2\n"
 
+#: selectunit.ssymlink
+msgid "This is SymLink! We need a real goal!"
+msgstr "Это SymLink! Нужна настоящая цель!"
+
 #: tmainform.addbtn.caption
 msgctxt "tmainform.addbtn.caption"
 msgid "Add"

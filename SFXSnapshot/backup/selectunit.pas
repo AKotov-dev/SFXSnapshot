@@ -39,6 +39,8 @@ type
 
   end;
 
+  resourcestring
+        SSymLink='This is SymLink! We need a real goal!';
 var
   SelectForm: TSelectForm;
 
@@ -56,7 +58,7 @@ begin
 
   //Проверяем каталог на симлинк
   if fpReadLink(ExcludeTrailingPathDelimiter(ShellTreeView1.Path)) <> '' then
-    Panel1.Caption := 'ytytyt'//SSymLink
+    Panel1.Caption := SSymLink
   else
     Panel1.Caption := '';
 
