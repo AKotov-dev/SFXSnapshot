@@ -27,7 +27,7 @@ msgstr ""
 
 #: tmainform.caption
 msgctxt "tmainform.caption"
-msgid "SFXCreator"
+msgid "SFXSnapshot"
 msgstr ""
 
 #: tmainform.checkbox1.caption
@@ -47,7 +47,7 @@ msgid "Delete selected"
 msgstr ""
 
 #: tmainform.menuitem10.caption
-msgid "Create SFX Archive"
+msgid "Create SFX Snapshot"
 msgstr ""
 
 #: tmainform.menuitem2.caption

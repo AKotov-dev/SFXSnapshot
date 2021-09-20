@@ -87,7 +87,7 @@ begin
       ExProcess.Parameters.Add('--rows');
       ExProcess.Parameters.Add('35');
       ExProcess.Parameters.Add('--title');
-      ExProcess.Parameters.Add('Make SFX Archive');
+      ExProcess.Parameters.Add('Make SFX Snapshot');
       ExProcess.Parameters.Add('--execute'); //для xterm '-e'
     end
     else
@@ -109,7 +109,7 @@ end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  StartProcess('find ' + WorkDir + '/* -type f ! -name "*.xml" -delete', 'bash');
+  StartProcess('find ' + WorkDir + '/* -type f ! -name "*.xml" -delete', 'sh');
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);

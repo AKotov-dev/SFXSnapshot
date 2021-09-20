@@ -4,7 +4,7 @@ object MainForm: TMainForm
   Top = 125
   Width = 856
   ActiveControl = Edit1
-  Caption = 'SFXCreator'
+  Caption = 'SFXSnapshot'
   ClientHeight = 657
   ClientWidth = 856
   OnClose = FormClose
@@ -207,7 +207,7 @@ object MainForm: TMainForm
       Caption = '-'
     end
     object MenuItem10: TMenuItem
-      Caption = 'Create SFX Archive'
+      Caption = 'Create SFX Snapshot'
       ImageIndex = 1
       OnClick = SFXBtnClick
     end

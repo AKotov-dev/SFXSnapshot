@@ -87,7 +87,7 @@ begin
       ExProcess.Parameters.Add('--rows');
       ExProcess.Parameters.Add('35');
       ExProcess.Parameters.Add('--title');
-      ExProcess.Parameters.Add('Make SFX Archive');
+      ExProcess.Parameters.Add('Make SFX Snapshot');
       ExProcess.Parameters.Add('--execute'); //для xterm '-e'
     end
     else
