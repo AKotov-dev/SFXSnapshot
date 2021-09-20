@@ -28,7 +28,7 @@ tar -P -zcvf "./$SFX_NAME.tar.gz" -T "./files.lst"
 #---------------------------------------------------
 
 #Создаю стартовый скрипт распаковки ./install.sh
-echo -e "#!/bin/sh\n\n\
+echo -e "#!/bin/bash\n\n\
 clear\n\
 echo 'Install \"$SFX_NAME\"?'\n\
 echo '---'\n\
