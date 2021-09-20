@@ -1,5 +1,5 @@
 # SFXSnapshot
-Creating SFX snapshots of files and folders.
+Creating SFX snapshots (archive) of files and folders.
 
 Dependencies: zstd, sakura  
 
