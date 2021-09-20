@@ -1,0 +1,5 @@
+{"version":1,"strings":[
+{"hash":198837139,"name":"tselectform.caption","sourcebytes":[83,101,108,101,99,116,32,102,105,108,101,115,32,97,110,100,32,102,111,108,100,101,114,115],"value":"Select files and folders"},
+{"hash":18340,"name":"tselectform.addbtn.caption","sourcebytes":[65,100,100],"value":"Add"},
+{"hash":96905381,"name":"tselectform.updatebtn.caption","sourcebytes":[85,112,100,97,116,101],"value":"Update"}
+]}

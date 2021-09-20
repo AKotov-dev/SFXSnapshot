@@ -1,0 +1,484 @@
+unit Unit1;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  XMLPropStorage, ExtCtrls, ComCtrls, Menus, Process, IniFiles;
+
+type
+
+  { TMainForm }
+
+  TMainForm = class(TForm)
+    Bevel1: TBevel;
+    Bevel2: TBevel;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    AboutBtn: TButton;
+    RPMBtn: TButton;
+    LangBtn: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    CheckBox1: TCheckBox;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    ImageList1: TImageList;
+    Label1: TLabel;
+    Label2: TLabel;
+    ListBox1: TListBox;
+    LoadBtn: TButton;
+    MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
+    OpenFile: TOpenDialog;
+    OpenDir: TSelectDirectoryDialog;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    PopupMenu1: TPopupMenu;
+    SaveBtn: TButton;
+    SaveDialog1: TSaveDialog;
+    Splitter1: TSplitter;
+    StatusBar1: TStatusBar;
+    MainFormStorage: TXMLPropStorage;
+    procedure AboutBtnClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure CheckBox1Change(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure RPMBtnClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure LangBtnClick(Sender: TObject);
+    procedure LoadBtnClick(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure SaveBtnClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure StartProcess(command, terminal: string);
+    procedure SearchDeskTop;
+    procedure LangSelect;
+
+  private
+
+  public
+
+  end;
+
+var
+  MainForm: TMainForm;
+  WorkDir: string;
+  SaveFlag: boolean;
+
+implementation
+
+uses unit2;
+
+{$R *.lfm}
+
+{ TMainForm }
+
+//Общая процедура запуска команд
+procedure TMainForm.StartProcess(command, terminal: string);
+var
+  ExProcess: TProcess;
+begin
+  Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
+  ExProcess := TProcess.Create(nil);
+  try
+    ExProcess.Executable := terminal;  //sh или xterm
+    if terminal <> 'sh' then
+    begin
+      ExProcess.Parameters.Add('--font');
+      ExProcess.Parameters.Add('10');
+      ExProcess.Parameters.Add('--columns');
+      ExProcess.Parameters.Add('120');
+      ExProcess.Parameters.Add('--rows');
+      ExProcess.Parameters.Add('40');
+      ExProcess.Parameters.Add('--title');
+      ExProcess.Parameters.Add('Make SFX-patch');
+      ExProcess.Parameters.Add('--execute'); //для xterm '-e'
+    end
+    else
+      ExProcess.Parameters.Add('-c');
+
+    ExProcess.Parameters.Add(command);
+    ExProcess.Options := ExProcess.Options + [poWaitOnExit];
+    ExProcess.Execute;
+  finally
+    ExProcess.Free;
+    Screen.Cursor := crDefault;
+  end;
+end;
+
+
+//Ищем Рабочий Стол
+procedure TMainForm.SearchDeskTop;
+var
+  UserName: string;
+begin
+  UserName := GetEnvironmentVariable('USER');
+
+  if DirectoryExists('/home/' + UserName + '/Рабочий стол') then
+    OpenFile.InitialDir := '/home/' + UserName + '/Рабочий стол'
+  else
+  if DirectoryExists('/home/' + UserName + '/Desktop') then
+    OpenFile.InitialDir := '/home/' + UserName + '/Desktop'
+  else
+    OpenFile.InitialDir := '/home';
+
+  OpenDir.InitialDir := OpenFile.InitialDir;
+  SaveDialog1.InitialDir := OpenFile.InitialDir;
+end;
+
+//Выбор языка интерфейса
+procedure TMainForm.LangSelect;
+begin
+  if LangBtn.Caption = 'RU' then
+  begin
+    Label1.Caption := 'SFX-patch name:';
+    Label2.Caption := 'Destination folder:';
+    Button1.Caption := '+ Files';
+    Button2.Caption := '+ Dir-s';
+    Button7.Caption := 'Select all';
+    Button3.Caption := 'Delete from list';
+    LoadBtn.Caption := 'Load from file';
+    SaveBtn.Caption := 'Save to file';
+    Button6.Caption := 'Make SFX-patch';
+    CheckBox1.Caption := 'Require root';
+    //Hint's EN
+    Edit1.Hint := '|Name of sfx-patch';
+    Edit2.Hint := '|Folder for saving sfx-patch';
+    Button5.Hint := '|Select the folder to save the sfx-patch';
+    Button1.Hint := '|Add files to list [active Ctrl+mouse]';
+    Button2.Hint := '|Add folders to list [active Ctrl+mouse]';
+    Button7.Hint := '|Select all entries in the list';
+    Button3.Hint := '|Delete selected list entries';
+    LoadBtn.Hint := '|Load list from file *.lst';
+    SaveBtn.Hint := '|Save list to file *.lst';
+    Button6.Hint := '|Start the build sfx-patch';
+    CheckBox1.Hint := '|Require root privileges when unpack the sfx-patch';
+    ListBox1.Hint :=
+      '|List of files and folders to build sfx-patch [there is a PopUp-menu]';
+    RPMBtn.Hint := '|Download package file list by package name';
+    //PopUP Menu EN
+    PopUpMenu1.Items[0].Caption := 'Add files';
+    PopUpMenu1.Items[1].Caption := 'Add folders';
+    PopUpMenu1.Items[3].Caption := 'Load from file';
+    PopUpMenu1.Items[4].Caption := 'Save to file';
+    PopUpMenu1.Items[6].Caption := 'Make SFX-patch';
+  end
+  else
+  begin
+    Label1.Caption := 'Имя sfx-патча:';
+    Label2.Caption := 'Папка назначения:';
+    Button1.Caption := '+ Файлы';
+    Button2.Caption := '+ Папки';
+    Button7.Caption := 'Выделить все';
+    Button3.Caption := 'Убрать из списка';
+    LoadBtn.Caption := 'Загрузить список';
+    SaveBtn.Caption := 'Сохранить список';
+    Button6.Caption := 'Собрать SFX-патч';
+    CheckBox1.Caption := 'Требовать root';
+    //Hint's RU
+    Edit1.Hint := '|Название sfx-патча';
+    Edit2.Hint := '|Папка для сохранения sfx-патча';
+    Button5.Hint := '|Выбрать папку для сохранения sfx-патча';
+    Button1.Hint := '|Добавить файлы в список [активно Ctrl+мышь]';
+    Button2.Hint := '|Добавить папки в список [активно Ctrl+мышь]';
+    Button7.Hint := '|Выделить все записи в списке';
+    Button3.Hint := '|Удалить выделенные записи списка';
+    LoadBtn.Hint := '|Загрузить список из файла *.lst';
+    SaveBtn.Hint := '|Сохранить список в файл *.lst';
+    Button6.Hint := '|Запустить сборку sfx-патча';
+    CheckBox1.Hint := '|Требовать привилегии root при распаковке sfx-патча';
+    ListBox1.Hint := '|Список файлов и папок для сборки sfx-патча [есть PopUp-меню]';
+    RPMBtn.Hint := '|Загрузить список файлов пакета по имени пакета';
+    //PopUP Menu RU
+    PopUpMenu1.Items[0].Caption := 'Добавить файлы';
+    PopUpMenu1.Items[1].Caption := 'Добавить папки';
+    PopUpMenu1.Items[3].Caption := 'Загрузить из файла';
+    PopUpMenu1.Items[4].Caption := 'Сохранить в файл';
+    PopUpMenu1.Items[6].Caption := 'Собрать SFX-патч';
+  end;
+end;
+
+
+procedure TMainForm.Button1Click(Sender: TObject);
+var
+  i: integer;
+begin
+  OpenFile.Filter := '';
+  if OPenFile.Execute then
+  begin
+    for i := 1 to OpenFile.Files.Count do
+      ListBox1.Items.Append(OpenFile.Files.Strings[i - 1]);
+    SaveFlag := True;
+  end;
+end;
+
+procedure TMainForm.AboutBtnClick(Sender: TObject);
+begin
+  AboutForm.Show;
+end;
+
+procedure TMainForm.Button2Click(Sender: TObject);
+var
+  i: integer;
+begin
+  if OPenDir.Execute then
+  begin
+    for i := 1 to OpenDir.Files.Count do
+      ListBox1.Items.Append(IncludeTrailingBackslash(OpenDir.Files.Strings[i - 1]));
+    SaveFlag := True;
+  end;
+end;
+
+procedure TMainForm.Button3Click(Sender: TObject);
+var
+  i: integer;
+  msg: string;
+begin
+  if LangBtn.Caption = 'EN' then
+    msg := 'Удалить выделенные позиции списка?'
+  else
+    msg := 'Delete selected list items?';
+
+  if ListBox1.SelCount <> 0 then
+    if MessageDlg(msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    begin
+      for i := -1 + ListBox1.Items.Count downto 0 do
+        if ListBox1.Selected[i] then
+          ListBox1.Items.Delete(i);
+      SaveFlag := True;
+    end;
+end;
+
+procedure TMainForm.CheckBox1Change(Sender: TObject);
+begin
+  SaveFlag := True;
+end;
+
+procedure TMainForm.Edit1Change(Sender: TObject);
+begin
+  SaveFlag := True;
+end;
+
+procedure TMainForm.RPMBtnClick(Sender: TObject);
+var
+  RPMName, Str: string;
+begin
+  //Грузим список файлов, из которых состоит пакет.rpm
+  RPMName := '';
+
+  if LangBtn.Caption = 'EN' then
+    Str := 'Пожалуйста, введите имя пакета:'
+  else
+    Str := 'Please enter the name of the package:';
+  if not InputQuery('PatchCreator', Str, RPMName) then
+    Exit;
+
+  StartProcess('/usr/bin/rpm -ql ' + RPMName + ' > ' + '''' + WorkDir +
+    'rpmfiles.lst' + '''', 'sh');
+  ListBox1.Items.LoadFromFile(WorkDir + 'rpmfiles.lst');
+end;
+
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+  LangSelect;
+  MainForm.Caption := Application.Title;
+end;
+
+procedure TMainForm.LangBtnClick(Sender: TObject);
+begin
+  if LangBtn.Caption = 'RU' then
+    LangBtn.Caption := 'EN'
+  else
+    LangBtn.Caption := 'RU';
+  LangSelect;
+end;
+
+procedure TMainForm.LoadBtnClick(Sender: TObject);
+var
+  i: integer;
+  S: string;
+  LST: TIniFile;
+begin
+  OpenFile.Filter := 'PatchCreator files|*.prj;*.lst';
+
+  if OpenFile.Execute then
+  begin
+    LST := TIniFile.Create(OpenFile.FileName);
+
+    Edit1.Text := LST.ReadString('PATCHNAME', 'patchname', '');
+    Edit2.Text := LST.ReadString('PATCHDIR', 'patchdir', '');
+    CheckBox1.Checked := LST.ReadBool('ROOTREQUEST', 'rootrequest', False);
+
+    LST.ReadSectionValues('FILES', Listbox1.Items);
+
+    //Удаляем имена ключей= из items[i]
+    for i := 0 to ListBox1.Items.Count - 1 do
+    begin
+      S := ListBox1.Items[i];
+      Delete(S, 1, Pos('=', S));
+      ListBox1.Items[i] := S;
+    end;
+
+    MainForm.Caption := Application.Title + ' <' +
+      ExtractFileName(OpenFile.FileName) + '>';
+
+    LST.Free;
+    SaveFlag := False;
+    Edit1.SetFocus;
+  end;
+end;
+
+procedure TMainForm.Button5Click(Sender: TObject);
+begin
+  if OpenDir.Execute then
+    Edit2.Text := OpenDir.FileName;
+end;
+
+procedure TMainForm.Button6Click(Sender: TObject);
+var
+  Term, Root: string;
+begin
+  ListBox1.SetFocus;
+
+  //Обрезаем лишние пробелы в эдитах
+  Edit1.Text := Trim(Edit1.Text);
+  Edit2.Text := Trim(Edit2.Text);
+
+  if Edit1.Text = '' then
+  begin
+    if LangBtn.Caption = 'EN' then
+      MessageDlg('Имя патча не указано!', mtWarning, [mbOK], 0)
+    else
+      MessageDlg('The name of the patch is not listed!', mtWarning, [mbOK], 0);
+    Exit;
+  end;
+
+  if not DirectoryExists(Edit2.Text) then
+  begin
+    if LangBtn.Caption = 'EN' then
+      MessageDlg('Папка назначения не обнаружена!', mtWarning, [mbOK], 0)
+    else
+      MessageDlg('Destination folder not found!', mtWarning, [mbOK], 0);
+    Exit;
+  end;
+
+  if ListBox1.Items.Count = 0 then
+  begin
+    if LangBtn.Caption = 'EN' then
+      MessageDlg('Список файлов пуст!', mtWarning, [mbOK], 0)
+    else
+      MessageDlg('The list of files is empty!', mtWarning, [mbOK], 0);
+    Exit;
+  end;
+
+  //Разрядность консоли sakura
+  Term := string(
+{$I %FPCTARGETCPU%}
+    );
+
+  if Term <> 'x86_64' then
+    Term := 'sakura32'
+  else
+    Term := 'sakura64';
+
+  //Требовать root/su при распаковке SFX?
+  if CheckBox1.Checked then
+    Root := '--needroot'
+  else
+    Root := '';
+
+  //Текущая директория
+  SetCurrentDir(WorkDir + 'res');
+
+  //Сохраняем список файлов/папок в ./files.lst
+  ListBox1.Items.SaveToFile('./files.lst');
+
+  //Запускаем creator.sh
+  StartProcess('./patch-creator.sh ' + '"' + Edit1.Text + '"' + ' ' +
+    '"' + Edit2.Text + '" ' + Root, Term);
+end;
+
+procedure TMainForm.Button7Click(Sender: TObject);
+begin
+  ListBox1.SelectAll;
+end;
+
+procedure TMainForm.SaveBtnClick(Sender: TObject);
+var
+  i: integer;
+  LST: TIniFile;
+begin
+  //Обрезаем лишние пробелы в эдитах
+  Edit1.Text := Trim(Edit1.Text);
+  Edit2.Text := Trim(Edit2.Text);
+
+  if SaveDialog1.Execute then
+  begin
+    if FileExists(SaveDialog1.FileName) then
+      DeleteFile(SaveDialog1.FileName);
+
+    LST := TIniFile.Create(SaveDialog1.FileName);
+
+    LST.WriteString('PATCHNAME', 'patchname', Edit1.Text);
+    LST.WriteString('PATCHDIR', 'patchdir', Edit2.Text);
+
+    LST.WriteBool('ROOTREQUEST', 'rootrequest', CheckBox1.Checked);
+
+
+    for i := 0 to ListBox1.Items.Count - 1 do
+      LST.WriteString('FILES', IntToStr(i), ListBox1.Items[i]);
+
+
+    MainForm.Caption := Application.Title + ' <' +
+      ExtractFileName(SaveDialog1.FileName) + '>';
+
+    LST.Free;
+    SaveFlag := False;
+    Edit1.SetFocus;
+  end;
+end;
+
+procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+var
+  msg: string;
+begin
+  if LangBtn.Caption = 'EN' then
+    msg := 'Информация изменялась. Сохранить?'
+  else
+    msg := 'Information has changed. Save it?';
+
+  if SaveFlag then
+    if MessageDlg(msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      SaveBtn.Click;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+  //Рабочая директория
+  WorkDir := ExtractFilePath(ParamStr(0));
+  MainFormStorage.FileName := WorkDir + 'settings.xml';
+
+  //Флаг сохранения списка
+  SaveFlag := False;
+
+  //Ищем Рабочий стол
+  SearchDeskTop;
+end;
+
+end.
