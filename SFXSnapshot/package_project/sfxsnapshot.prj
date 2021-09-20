@@ -44,7 +44,7 @@ noarch=0
 sign=0
 
 [DEB]
-deb=0
+deb=1
 
 [FILES]
 0=/usr/bin/sfxsnapshot
