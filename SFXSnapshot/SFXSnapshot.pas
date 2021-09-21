@@ -14,8 +14,8 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
 {$R *.res}
 
 begin
-  Application.Scaled:=True;
-  Application.Title:='SFXSnapshot v0.1';
+  Application.Scaled := True;
+  Application.Title:='SFXSnapshot v0.2';
   RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);

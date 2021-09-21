@@ -11,25 +11,11 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   Dialogs,
   SelectUnit;
 
-//var
- // MyProg: TUniqueInstance;
-
 {$R *.res}
 
 begin
-  Application.Scaled:=True;
-  Application.Title:='SFXSnapshot v0.1';
-
- { //Проверяем, нет ли в системе объекта с таким ID
-  if MyProg.IsRunInstance then
-  begin
-    MessageDlg('Application is running!', mtWarning, [mbOK], 0);
-    MyProg.Free;
-    Halt(1);
-  end
-  else
-    MyProg.RunListen;
-  }
+  Application.Scaled := True;
+  Application.Title := 'SFXSnapshot v0.1';
   RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);

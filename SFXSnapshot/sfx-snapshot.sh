@@ -41,8 +41,8 @@ read a" > ./install.sh
 chmod +x ./install.sh
 
 if [ -n "$SFX_ROOT" ]; then
-echo -e "${color}Make $SFX_NAME.run with root privilege request...${ncolor}"; else
-echo -e "${color}Make $SFX_NAME.run without request for root privileges...${ncolor}"; fi
+echo -e "${color}Make \"$SFX_NAME.run\" with root privilege request...${ncolor}"; else
+echo -e "${color}Make \"$SFX_NAME.run\" without request for root privileges...${ncolor}"; fi
 
 "$CMD_PATH"/makeself --version
 "$CMD_PATH"/makeself --zstd --header "$CMD_PATH/makeself-header.sh" \

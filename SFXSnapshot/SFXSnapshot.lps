@@ -39,9 +39,8 @@
       <Unit0>
         <Filename Value="SFXSnapshot.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos Y="19"/>
+        <CursorPos X="41" Y="18"/>
         <UsageCount Value="55"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -52,7 +51,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <CursorPos X="26" Y="74"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="172"/>
+        <CursorPos X="25" Y="48"/>
         <UsageCount Value="55"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -66,7 +67,7 @@
         <UnitName Value="SelectUnit"/>
         <EditorIndex Value="2"/>
         <TopLine Value="4"/>
-        <CursorPos X="71" Y="9"/>
+        <CursorPos X="56" Y="11"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
