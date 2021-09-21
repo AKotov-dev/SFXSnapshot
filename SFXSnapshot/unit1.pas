@@ -156,6 +156,9 @@ begin
   for i := -1 + ListBox1.Items.Count downto 0 do
     if ListBox1.Selected[i] then
       ListBox1.Items.Delete(i);
+
+  if (ListBox1.SelCount = 0) and (ListBox1.Count <> 0) then
+    ListBox1.ItemIndex := ListBox1.Count - 1;
 end;
 
 procedure TMainForm.AddBtnClick(Sender: TObject);
