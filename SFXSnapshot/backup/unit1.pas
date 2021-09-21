@@ -145,7 +145,7 @@ begin
   MainFormStorage.FileName := WorkDir + '/settings.xml';
 
   SaveDialog1.InitialDir := GetEnvironmentVariable('HOME');
- // OpenDialog1.InitialDir := SaveDialog1.InitialDir;
+  OpenDialog1.InitialDir := SaveDialog1.InitialDir;
 end;
 
 //Delete selected items
@@ -188,7 +188,12 @@ end;
 procedure TMainForm.MenuItem4Click(Sender: TObject);
 begin
   if OpenDialog1.Execute then
+  begin
     ListBox1.Items.LoadFromFile(OpenDialog1.FileName);
+   // ListBox1.SetFocus;
+    if ListBox1.Count <> 0 then
+      ListBox1.ItemIndex := 0;
+  end;
 end;
 
 procedure TMainForm.SFXBtnClick(Sender: TObject);

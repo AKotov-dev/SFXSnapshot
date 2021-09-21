@@ -188,7 +188,11 @@ end;
 procedure TMainForm.MenuItem4Click(Sender: TObject);
 begin
   if OpenDialog1.Execute then
+  begin
     ListBox1.Items.LoadFromFile(OpenDialog1.FileName);
+    if ListBox1.Count <> 0 then
+      ListBox1.ItemIndex := 0;
+  end;
 end;
 
 procedure TMainForm.SFXBtnClick(Sender: TObject);
