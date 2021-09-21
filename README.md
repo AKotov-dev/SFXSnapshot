@@ -1,7 +1,8 @@
 # SFXSnapshot
-Creating SFX snapshots (archive) of files and folders.
+Creating SFX snapshots (archive) of files and folders. It is intended for the distribution of self-installing hotfixes when it is impossible or irrational to build a normal package.  
 
 Dependencies: zstd, sakura  
+Free icons: https://icon-icons.com  
 
 Works with the "makeself" script and uses "zstd" compression
 --
