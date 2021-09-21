@@ -177,7 +177,11 @@ end;
 //Save to file
 procedure TMainForm.SaveItemClick(Sender: TObject);
 begin
-  SaveDialog1.FileName := Edit1.Text;
+  if Trim(Edit1.Text) <> '' then
+    SaveDialog1.FileName := Edit1.Text + '.lst'
+  else
+    SaveDialog1.FileName := 'noname.lst';
+
   if SaveDialog1.Execute then
     ListBox1.Items.SaveToFile(SaveDialog1.FileName);
 end;

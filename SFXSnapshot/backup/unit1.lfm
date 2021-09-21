@@ -988,7 +988,7 @@ object MainForm: TMainForm
   end
   object SaveDialog1: TSaveDialog
     DefaultExt = '.lst'
-    Filter = 'SFXSnapshot files (*.lst)|*.lst'
+    Filter = 'SFXSnapshot files|*.lst'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
     Left = 136
     Top = 104

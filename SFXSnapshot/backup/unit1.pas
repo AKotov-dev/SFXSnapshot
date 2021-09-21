@@ -152,7 +152,8 @@ end;
 procedure TMainForm.DeleteItemClick(Sender: TObject);
 begin
   ListBox1.DeleteSelected;
-  if (ListBox1.SelCount = 0) and (ListBox1.Count <> 0) then ListBox1.Selected[ListBox1.Count-1]:=True;
+  if (ListBox1.SelCount = 0) and (ListBox1.Count <> 0) then
+    ListBox1.Selected[ListBox1.Count - 1] := True;
 end;
 
 procedure TMainForm.AddBtnClick(Sender: TObject);
@@ -176,7 +177,11 @@ end;
 //Save to file
 procedure TMainForm.SaveItemClick(Sender: TObject);
 begin
-  SaveDialog1.FileName := Edit1.Text;
+  if Trim(Edit1.Text) <> '' then
+    SaveDialog1.FileName := Edit1.Text + '.lst'
+  else
+    SaveDialog1.FileName := 'noname.lst';
+
   if SaveDialog1.Execute then
     ListBox1.Items.SaveToFile(SaveDialog1.FileName);
 end;
