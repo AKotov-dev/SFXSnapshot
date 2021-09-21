@@ -20,7 +20,7 @@ cd $WORK_DIR; #Делаем текущим рабочий каталог юзе�
 #Подчищаем старый патч, если создавался
 rm -f ./*.tar.gz ./*.run
 
-echo -e "${color}Collect objects from file list...${ncolor}"
+echo -e "${color}Assembling objects from a list of files...${ncolor}"
 echo "---"
 
 tar -P -zcvf "./$SFX_NAME.tar.gz" -T "./files.lst"
