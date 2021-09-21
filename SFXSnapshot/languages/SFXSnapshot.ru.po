@@ -41,7 +41,7 @@ msgstr "Удалить выбранное"
 
 #: tmainform.label1.caption
 msgid "Archive name:"
-msgstr "Название архива:"
+msgstr "Имя архива:"
 
 #: tmainform.label2.caption
 msgid "Destination folder:"
@@ -90,6 +90,10 @@ msgstr "В панели справа можно использовать Ctrl+A 
 #: tselectform.updatebtn.caption
 msgid "Update"
 msgstr "Обновить"
+
+#: unit1.sdeleteitems
+msgid "Delete the selected entries?"
+msgstr "Удалить выбранные записи?"
 
 #: unit1.slistfileempty
 msgid "The list of files is empty!"

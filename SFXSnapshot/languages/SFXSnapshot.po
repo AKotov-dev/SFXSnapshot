@@ -91,6 +91,10 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
+#: unit1.sdeleteitems
+msgid "Delete the selected entries?"
+msgstr ""
+
 #: unit1.slistfileempty
 msgid "The list of files is empty!"
 msgstr ""

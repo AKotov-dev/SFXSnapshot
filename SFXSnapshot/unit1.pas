@@ -64,6 +64,7 @@ resourcestring
   SNoSFXName = 'The name of the archive is not listed!';
   SNoDestFolder = 'Destination folder not found!';
   SListFileEmpty = 'The list of files is empty!';
+  SDeleteItems = 'Delete the selected entries?';
 
 var
   MainForm: TMainForm;
@@ -151,9 +152,12 @@ end;
 //Delete selected items
 procedure TMainForm.DeleteItemClick(Sender: TObject);
 begin
-  ListBox1.DeleteSelected;
-  if (ListBox1.SelCount = 0) and (ListBox1.Count <> 0) then
-    ListBox1.Selected[ListBox1.Count - 1] := True;
+  if MessageDlg(SDeleteItems, mtConfirmation, mbOKCancel, 0) = mrOk then
+  begin
+    ListBox1.DeleteSelected;
+    if (ListBox1.SelCount = 0) and (ListBox1.Count <> 0) then
+      ListBox1.Selected[ListBox1.Count - 1] := True;
+  end;
 end;
 
 procedure TMainForm.AddBtnClick(Sender: TObject);
@@ -194,6 +198,10 @@ begin
     ListBox1.Items.LoadFromFile(OpenDialog1.FileName);
     if ListBox1.Count <> 0 then
       ListBox1.ItemIndex := 0;
+
+    //Имя в Edit1
+    Edit1.Text := Copy(ExtractFileName(OpenDialog1.FileName), 1,
+      Length(ExtractFileName(OpenDialog1.FileName)) - 4);
   end;
 end;
 
