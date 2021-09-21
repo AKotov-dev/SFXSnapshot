@@ -150,15 +150,8 @@ end;
 
 //Delete selected items
 procedure TMainForm.DeleteItemClick(Sender: TObject);
-var
-  i: integer;
 begin
-  for i := -1 + ListBox1.Items.Count downto 0 do
-    if ListBox1.Selected[i] then
-      ListBox1.Items.Delete(i);
-
-  if (ListBox1.SelCount = 0) and (ListBox1.Count <> 0) then
-    ListBox1.ItemIndex := 0;
+  ListBox1.DeleteSelected;
 end;
 
 procedure TMainForm.AddBtnClick(Sender: TObject);
@@ -193,6 +186,7 @@ begin
   if OpenDialog1.Execute then
   begin
     ListBox1.Items.LoadFromFile(OpenDialog1.FileName);
+    Application.ProcessMessages;
     if ListBox1.Count <> 0 then
       ListBox1.ItemIndex := 0;
   end;
