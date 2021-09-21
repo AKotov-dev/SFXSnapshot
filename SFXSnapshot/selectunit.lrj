@@ -1,5 +1,6 @@
 {"version":1,"strings":[
 {"hash":198837139,"name":"tselectform.caption","sourcebytes":[83,101,108,101,99,116,32,102,105,108,101,115,32,97,110,100,32,102,111,108,100,101,114,115],"value":"Select files and folders"},
 {"hash":18340,"name":"tselectform.addbtn.caption","sourcebytes":[65,100,100],"value":"Add"},
-{"hash":96905381,"name":"tselectform.updatebtn.caption","sourcebytes":[85,112,100,97,116,101],"value":"Update"}
+{"hash":96905381,"name":"tselectform.updatebtn.caption","sourcebytes":[85,112,100,97,116,101],"value":"Update"},
+{"hash":10913646,"name":"tselectform.statictext1.caption","sourcebytes":[73,110,32,116,104,101,32,112,97,110,101,108,32,111,110,32,116,104,101,32,114,105,103,104,116,44,32,121,111,117,32,99,97,110,32,117,115,101,32,67,116,114,108,43,65,32,111,114,32,67,116,114,108,43,77,111,117,115,101,46,46,46],"value":"In the panel on the right, you can use Ctrl+A or Ctrl+Mouse..."}
 ]}

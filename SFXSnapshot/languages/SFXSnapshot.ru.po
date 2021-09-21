@@ -44,7 +44,7 @@ msgstr "Папка назначения:"
 
 #: tmainform.menuitem1.caption
 msgid "Delete selected"
-msgstr "Удалить выделенное"
+msgstr "Удалить выбранное"
 
 #: tmainform.menuitem10.caption
 msgid "Create SFX Snapshot"
@@ -72,6 +72,10 @@ msgstr "Добавить"
 #: tselectform.caption
 msgid "Select files and folders"
 msgstr "Выбрать файлы и папки"
+
+#: tselectform.statictext1.caption
+msgid "In the panel on the right, you can use Ctrl+A or Ctrl+Mouse..."
+msgstr "В панели справа можно использовать Ctrl+A или Ctrl+Мышь..."
 
 #: tselectform.updatebtn.caption
 msgid "Update"

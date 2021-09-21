@@ -73,6 +73,10 @@ msgstr ""
 msgid "Select files and folders"
 msgstr ""
 
+#: tselectform.statictext1.caption
+msgid "In the panel on the right, you can use Ctrl+A or Ctrl+Mouse..."
+msgstr ""
+
 #: tselectform.updatebtn.caption
 msgid "Update"
 msgstr ""

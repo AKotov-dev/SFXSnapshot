@@ -77,7 +77,7 @@ begin
   Application.ProcessMessages;
   ExProcess := TProcess.Create(nil);
   try
-    ExProcess.Executable := terminal;  //sh или xterm
+    ExProcess.Executable := terminal;  //sh или terminal (sakura)
     if terminal <> 'sh' then
     begin
       ExProcess.Parameters.Add('--font');
@@ -85,7 +85,7 @@ begin
       ExProcess.Parameters.Add('--columns');
       ExProcess.Parameters.Add('110');
       ExProcess.Parameters.Add('--rows');
-      ExProcess.Parameters.Add('35');
+      ExProcess.Parameters.Add('40');
       ExProcess.Parameters.Add('--title');
       ExProcess.Parameters.Add('Make SFX Snapshot');
       ExProcess.Parameters.Add('--execute'); //для xterm '-e'
@@ -94,7 +94,7 @@ begin
       ExProcess.Parameters.Add('-c');
 
     ExProcess.Parameters.Add(command);
-    ExProcess.Options := ExProcess.Options + [poWaitOnExit];
+    ExProcess.Options := [poWaitOnExit];
     ExProcess.Execute;
   finally
     ExProcess.Free;

@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 307
-  Height = 657
-  Top = 125
+  Left = 308
+  Height = 643
+  Top = 124
   Width = 856
   ActiveControl = Edit1
   Caption = 'SFXSnapshot'
-  ClientHeight = 657
+  ClientHeight = 643
   ClientWidth = 856
   OnClose = FormClose
   OnCreate = FormCreate
@@ -16,7 +16,7 @@ object MainForm: TMainForm
   object StaticText1: TStaticText
     Left = 0
     Height = 18
-    Top = 639
+    Top = 625
     Width = 856
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2021   URL: https://linuxforum.ru'
@@ -165,7 +165,7 @@ object MainForm: TMainForm
   end
   object ListBox1: TListBox
     Left = 0
-    Height = 546
+    Height = 532
     Top = 93
     Width = 856
     Align = alClient

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ShellCtrls,
-  StdCtrls, ExtCtrls, XMLPropStorage, FileCtrl, ComCtrls, BaseUnix, Unix, Types;
+  StdCtrls, ExtCtrls, XMLPropStorage, FileCtrl, ComCtrls, BaseUnix;
 
 type
 
@@ -15,13 +15,13 @@ type
   TSelectForm = class(TForm)
     AddBtn: TButton;
     ImageList1: TImageList;
+    StaticText1: TStaticText;
     UpdateBtn: TButton;
     FileListBox1: TFileListBox;
     Panel1: TPanel;
     ShellTreeView1: TShellTreeView;
     Splitter1: TSplitter;
     SelectFormStorage: TXMLPropStorage;
-    StatusBar1: TStatusBar;
     procedure AddBtnClick(Sender: TObject);
     procedure FileListBox1DrawItem(Control: TWinControl; Index: integer;
       ARect: TRect; State: TOwnerDrawState);
@@ -39,8 +39,9 @@ type
 
   end;
 
-  resourcestring
-        SSymLink='This is SymLink! We need a real goal!';
+resourcestring
+  SSymLink = 'This is SymLink! We need a real goal!';
+
 var
   SelectForm: TSelectForm;
 

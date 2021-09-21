@@ -1,7 +1,7 @@
 object SelectForm: TSelectForm
-  Left = 350
+  Left = 345
   Height = 566
-  Top = 174
+  Top = 136
   Width = 755
   ActiveControl = FileListBox1
   Caption = 'Select files and folders'
@@ -107,14 +107,20 @@ object SelectForm: TSelectForm
     TabOrder = 3
     TopIndex = -1
   end
-  object StatusBar1: TStatusBar
+  object StaticText1: TStaticText
     Left = 0
     Height = 18
     Top = 548
     Width = 755
-    Panels = <>
+    Align = alBottom
+    Caption = 'In the panel on the right, you can use Ctrl+A or Ctrl+Mouse...'
+    Color = clDefault
+    Font.Color = clGray
+    Font.Height = -11
+    Font.Name = 'Sans'
     ParentFont = False
-    SimplePanel = False
+    ParentColor = False
+    TabOrder = 4
   end
   object SelectFormStorage: TXMLPropStorage
     StoredValues = <>
