@@ -25,14 +25,20 @@ type
     Label1: TLabel;
     Label2: TLabel;
     ListBox1: TListBox;
-    MenuItem1: TMenuItem;
+    DeleteItem: TMenuItem;
     MenuItem10: TMenuItem;
     MenuItem2: TMenuItem;
+    SaveItem: TMenuItem;
+    MenuItem4: TMenuItem;
+    N2: TMenuItem;
+    N1: TMenuItem;
     MenuItem6: TMenuItem;
+    OpenDialog1: TOpenDialog;
     OpenDir: TSelectDirectoryDialog;
     Panel1: TPanel;
     PopupMenu1: TPopupMenu;
     AddBtn: TSpeedButton;
+    SaveDialog1: TSaveDialog;
     SFXBtn: TSpeedButton;
     StaticText1: TStaticText;
     MainFormStorage: TXMLPropStorage;
@@ -40,8 +46,11 @@ type
     procedure FormShow(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure MenuItem1Click(Sender: TObject);
+    procedure DeleteItemClick(Sender: TObject);
     procedure AddBtnClick(Sender: TObject);
+    procedure PopupMenu1Popup(Sender: TObject);
+    procedure SaveItemClick(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
     procedure SFXBtnClick(Sender: TObject);
     procedure StartProcess(command, terminal: string);
     procedure ToolButton10Click(Sender: TObject);
@@ -134,23 +143,52 @@ begin
 
   //Настройки
   MainFormStorage.FileName := WorkDir + '/settings.xml';
+
+  SaveDialog1.InitialDir := GetEnvironmentVariable('HOME');
+  OpenDialog1.InitialDir := SaveDialog1.InitialDir;
 end;
 
-procedure TMainForm.MenuItem1Click(Sender: TObject);
+//Delete selected items
+procedure TMainForm.DeleteItemClick(Sender: TObject);
 var
   i: integer;
 begin
-  if ListBox1.SelCount <> 0 then
-  begin
-    for i := -1 + ListBox1.Items.Count downto 0 do
-      if ListBox1.Selected[i] then
-        ListBox1.Items.Delete(i);
-  end;
+  for i := -1 + ListBox1.Items.Count downto 0 do
+    if ListBox1.Selected[i] then
+      ListBox1.Items.Delete(i);
 end;
 
 procedure TMainForm.AddBtnClick(Sender: TObject);
 begin
   SelectForm.ShowModal;
+end;
+
+procedure TMainForm.PopupMenu1Popup(Sender: TObject);
+begin
+  if ListBox1.Count = 0 then
+    SaveItem.Enabled := False
+  else
+    SaveItem.Enabled := True;
+
+  if ListBox1.SelCount = 0 then
+    DeleteItem.Enabled := False
+  else
+    DeleteItem.Enabled := True;
+end;
+
+//Save to file
+procedure TMainForm.SaveItemClick(Sender: TObject);
+begin
+  SaveDialog1.FileName := Edit1.Text;
+  if SaveDialog1.Execute then
+    ListBox1.Items.SaveToFile(SaveDialog1.FileName);
+end;
+
+//Load from file
+procedure TMainForm.MenuItem4Click(Sender: TObject);
+begin
+  if OpenDialog1.Execute then
+    ListBox1.Items.LoadFromFile(OpenDialog1.FileName);
 end;
 
 procedure TMainForm.SFXBtnClick(Sender: TObject);

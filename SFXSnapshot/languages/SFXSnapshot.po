@@ -34,16 +34,17 @@ msgstr ""
 msgid "Require root when unpacking"
 msgstr ""
 
+#: tmainform.deleteitem.caption
+msgctxt "tmainform.deleteitem.caption"
+msgid "Delete selected"
+msgstr ""
+
 #: tmainform.label1.caption
 msgid "Archive name:"
 msgstr ""
 
 #: tmainform.label2.caption
 msgid "Destination folder:"
-msgstr ""
-
-#: tmainform.menuitem1.caption
-msgid "Delete selected"
 msgstr ""
 
 #: tmainform.menuitem10.caption
@@ -53,6 +54,15 @@ msgstr ""
 #: tmainform.menuitem2.caption
 msgctxt "tmainform.menuitem2.caption"
 msgid "Add"
+msgstr ""
+
+#: tmainform.menuitem4.caption
+msgid "Load from file"
+msgstr ""
+
+#: tmainform.saveitem.caption
+msgctxt "tmainform.saveitem.caption"
+msgid "Save to file"
 msgstr ""
 
 #: tmainform.sfxbtn.caption

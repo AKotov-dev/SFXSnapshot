@@ -2,7 +2,7 @@
 name=sfxsnapshot
 
 [VERSION]
-version=0.1
+version=0.2
 
 [RELEASE]
 release=0.mrx8
@@ -72,3 +72,8 @@ toolversion=2.0.10
 0=Creating SFX snapshots of files and folders
 1=The program works with the "makeself" script and uses "zstd" compression
 2=makeself: https://github.com/megastep/makeself
+3=
+4=v0.2
+5=+ Saving and loading a list from a file (*.lst)
+6=
+7=v0.1 - first release

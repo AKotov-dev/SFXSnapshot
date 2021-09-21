@@ -34,6 +34,11 @@ msgstr ""
 msgid "Require root when unpacking"
 msgstr "Требовать root при распаковке"
 
+#: tmainform.deleteitem.caption
+msgctxt "tmainform.deleteitem.caption"
+msgid "Delete selected"
+msgstr "Удалить выбранное"
+
 #: tmainform.label1.caption
 msgid "Archive name:"
 msgstr "Название архива:"
@@ -41,10 +46,6 @@ msgstr "Название архива:"
 #: tmainform.label2.caption
 msgid "Destination folder:"
 msgstr "Папка назначения:"
-
-#: tmainform.menuitem1.caption
-msgid "Delete selected"
-msgstr "Удалить выбранное"
 
 #: tmainform.menuitem10.caption
 msgid "Create SFX Snapshot"
@@ -54,6 +55,15 @@ msgstr "Создать SFX Снимок"
 msgctxt "tmainform.menuitem2.caption"
 msgid "Add"
 msgstr "Добавить"
+
+#: tmainform.menuitem4.caption
+msgid "Load from file"
+msgstr "Загрузить из файла"
+
+#: tmainform.saveitem.caption
+msgctxt "tmainform.saveitem.caption"
+msgid "Save to file"
+msgstr "Сохранить в файл"
 
 #: tmainform.sfxbtn.caption
 msgctxt "tmainform.sfxbtn.caption"
