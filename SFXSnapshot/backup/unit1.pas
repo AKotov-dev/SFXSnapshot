@@ -152,6 +152,7 @@ end;
 procedure TMainForm.DeleteItemClick(Sender: TObject);
 begin
   ListBox1.DeleteSelected;
+  if (ListBox1.SelCount = 0) and (ListBox1.Count <> 0) then ListBox1.Selected[ListBox1.Count-1]:=True;
 end;
 
 procedure TMainForm.AddBtnClick(Sender: TObject);
@@ -186,7 +187,6 @@ begin
   if OpenDialog1.Execute then
   begin
     ListBox1.Items.LoadFromFile(OpenDialog1.FileName);
-    Application.ProcessMessages;
     if ListBox1.Count <> 0 then
       ListBox1.ItemIndex := 0;
   end;
