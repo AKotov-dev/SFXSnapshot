@@ -2,7 +2,7 @@
 name=sfxsnapshot
 
 [VERSION]
-version=0.2
+version=0.3
 
 [RELEASE]
 release=0.mrx8
@@ -75,9 +75,12 @@ toolversion=2.0.10
 1=The program works with the "makeself" script and uses "zstd" compression
 2=makeself: https://github.com/megastep/makeself
 3=
-4=v0.2
-5=+ makeself-v2.4.5
-6=+ additional launch via pkexec
-7=+ saving and loading a list from a file (*.lst)
-8=
-9=v0.1 - first release
+4=v0.3
+5=+ sfx-snapshot.sh WORK_DIR correction
+6=
+7=v0.2
+8=+ makeself-v2.4.5
+9=+ additional launch via pkexec
+10=+ saving and loading a list from a file (*.lst)
+11=
+12=v0.1 - first release

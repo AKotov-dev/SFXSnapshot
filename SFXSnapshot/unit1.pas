@@ -249,7 +249,7 @@ begin
 
   //Запускаем sfx-creator.sh
   StartProcess('"' + ExtractFilePath(ParamStr(0)) + 'sfx-snapshot.sh" ' +
-    '"' + Edit1.Text + '"' + ' ' + '"' + Edit2.Text + '" ' + Root, 'sakura');
+    '"' + Edit1.Text + '" "' + Edit2.Text + '" "' + WorkDir + '" ' + Root, 'sakura');
 end;
 
 end.

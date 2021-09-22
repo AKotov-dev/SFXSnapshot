@@ -8,12 +8,10 @@ color='\e[32m'; ncolor='\e[0m';
 #Читаем параметры
 SFX_NAME="$1" #Имя SFX-архива
 SFX_PATH="$2" #Путь назначения для SFX-архива
-SFX_ROOT="$3" #Запрос root/su при распаковке SFX
+WORK_DIR="$3" #Путь к рабочему каталогу user/root
+SFX_ROOT="$4" #Запрос root/su при распаковке SFX
 
 CMD_PATH="$(dirname "$0")"; #Путь к рабочим скриптам
-
-#Пути к рабочим каталогам юзера/root
-[ $UID == "0" ] && WORK_DIR="/root/.SFXSnapshot" || WORK_DIR="/home/$USER/.SFXSnapshot"
 
 cd $WORK_DIR; #Делаем текущим рабочий каталог юзера для tar
 

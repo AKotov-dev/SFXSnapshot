@@ -104,7 +104,7 @@ begin
       ExProcess.Parameters.Add('-c');
 
     ExProcess.Parameters.Add(command);
-   // ExProcess.Options := [poWaitOnExit];
+    ExProcess.Options := [poWaitOnExit];
     ExProcess.Execute;
   finally
     ExProcess.Free;
@@ -249,7 +249,7 @@ begin
 
   //Запускаем sfx-creator.sh
   StartProcess('"' + ExtractFilePath(ParamStr(0)) + 'sfx-snapshot.sh" ' +
-    '"' + Edit1.Text + '"' + ' ' + '"' + Edit2.Text + '" ' + Root, 'sakura');
+    '"' + Edit1.Text + '" "' + Edit2.Text + '" ' + Root + ' "' + WorkDir + '"', 'sakura');
 end;
 
 end.
