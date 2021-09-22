@@ -104,7 +104,7 @@ begin
       ExProcess.Parameters.Add('-c');
 
     ExProcess.Parameters.Add(command);
-    ExProcess.Options := [poWaitOnExit];
+   // ExProcess.Options := [poWaitOnExit];
     ExProcess.Execute;
   finally
     ExProcess.Free;
