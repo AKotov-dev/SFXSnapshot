@@ -52,6 +52,8 @@ deb=1
 2=/usr/share/doc/sfxsnapshot/
 3=/usr/share/icons/sfxsnapshot.png
 4=/usr/share/applications/sfxsnapshot.desktop
+5=/usr/share/applications/sfxsnapshot-root.desktop
+6=/usr/share/polkit-1/actions/sfxsnapshot-root.policy
 
 [URL32]
 url32=https://github.com/AKotov-dev/SFXSnapshot
@@ -75,6 +77,7 @@ toolversion=2.0.10
 3=
 4=v0.2
 5=+ makeself-v2.4.5
-6=+ Saving and loading a list from a file (*.lst)
-7=
-8=v0.1 - first release
+6=+ additional launch via pkexec
+7=+ saving and loading a list from a file (*.lst)
+8=
+9=v0.1 - first release

@@ -116,10 +116,10 @@ object MainForm: TMainForm
       Left = 185
       Height = 15
       Top = 32
-      Width = 94
+      Width = 43
       Anchors = [akLeft, akBottom]
       BorderSpacing.Bottom = 2
-      Caption = 'Archive name:'
+      Caption = 'Name:'
       Font.Height = -13
       Font.Name = 'Sans'
       ParentColor = False

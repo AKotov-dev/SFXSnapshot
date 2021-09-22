@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 
-clear
-
 #Сбрасываем цвета
 tput sgr0
 #Определяем цвет выделения
@@ -13,7 +11,9 @@ SFX_PATH="$2" #Путь назначения для SFX-архива
 SFX_ROOT="$3" #Запрос root/su при распаковке SFX
 
 CMD_PATH="$(dirname "$0")"; #Путь к рабочим скриптам
-WORK_DIR="/home/$USER/.SFXSnapshot"; #Путь к рабочему каталогу юзера
+
+#Пути к рабочим каталогам юзера/root
+[ $UID == "0" ] && WORK_DIR="/root/.SFXSnapshot" || WORK_DIR="/home/$USER/.SFXSnapshot"
 
 cd $WORK_DIR; #Делаем текущим рабочий каталог юзера для tar
 

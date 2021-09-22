@@ -40,8 +40,8 @@ msgid "Delete selected"
 msgstr "Удалить выбранное"
 
 #: tmainform.label1.caption
-msgid "Archive name:"
-msgstr "Имя архива:"
+msgid "Name:"
+msgstr "Имя:"
 
 #: tmainform.label2.caption
 msgid "Destination folder:"
