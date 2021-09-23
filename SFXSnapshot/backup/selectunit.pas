@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ShellCtrls,
-  StdCtrls, ExtCtrls, XMLPropStorage, FileCtrl, ComCtrls, BaseUnix;
+  StdCtrls, ExtCtrls, XMLPropStorage, FileCtrl, ComCtrls, BaseUnix; //Unix, Types
 
 type
 
@@ -169,6 +169,8 @@ end;
 
 procedure TSelectForm.FormShow(Sender: TObject);
 begin
+  //For Plasma
+  SelectFormStorage.Restore;
   UpdateBtn.Click;
 end;
 

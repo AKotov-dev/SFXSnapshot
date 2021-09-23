@@ -169,6 +169,8 @@ end;
 
 procedure TSelectForm.FormShow(Sender: TObject);
 begin
+  //For Plasma
+  SelectFormStorage.Restore;
   UpdateBtn.Click;
 end;
 

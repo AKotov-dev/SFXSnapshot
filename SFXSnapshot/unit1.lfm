@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 305
+  Left = 286
   Height = 643
-  Top = 122
+  Top = 125
   Width = 856
   ActiveControl = Edit1
   Caption = 'SFXSnapshot'
@@ -12,7 +12,7 @@ object MainForm: TMainForm
   OnShow = FormShow
   Position = poDefault
   SessionProperties = 'Edit1.Text;Edit2.Text;Height;Left;Top;Width'
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.0.12.0'
   object StaticText1: TStaticText
     Left = 0
     Height = 18

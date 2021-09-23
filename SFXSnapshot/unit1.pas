@@ -124,6 +124,8 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
+  //For Plasma
+  MainFormStorage.Restore;
   MainForm.Caption := Application.Title;
 end;
 
