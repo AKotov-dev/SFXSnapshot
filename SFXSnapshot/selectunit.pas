@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ShellCtrls,
-  StdCtrls, ExtCtrls, XMLPropStorage, FileCtrl, ComCtrls, BaseUnix; //Unix, Types
+  StdCtrls, ExtCtrls, XMLPropStorage, FileCtrl, ComCtrls, BaseUnix;
 
 type
 
@@ -97,7 +97,6 @@ begin
       FileListBox1.SetFocus;
   end;
 end;
-
 
 //Иконки файлов в FileListBox
 procedure TSelectForm.FileListBox1DrawItem(Control: TWinControl;

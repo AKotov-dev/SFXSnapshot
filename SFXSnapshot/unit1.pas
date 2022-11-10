@@ -90,15 +90,31 @@ begin
     ExProcess.Executable := terminal;  //sh или terminal (sakura)
     if terminal <> 'sh' then
     begin
-      ExProcess.Parameters.Add('--font');
+      ExProcess.Parameters.Add('-xrm');
+      ExProcess.Parameters.Add('XTerm*allowTitleOps:false');
+      ExProcess.Parameters.Add('-xrm');
+      ExProcess.Parameters.Add('XTerm*cursorColor:red');
+      ExProcess.Parameters.Add('-xrm');
+      ExProcess.Parameters.Add('XTerm*cursorBlink:true');
+
+      ExProcess.Parameters.Add('-fa');
+      ExProcess.Parameters.Add('monospace');
+      ExProcess.Parameters.Add('-fs');
       ExProcess.Parameters.Add('10');
-      ExProcess.Parameters.Add('--columns');
-      ExProcess.Parameters.Add('110');
-      ExProcess.Parameters.Add('--rows');
-      ExProcess.Parameters.Add('38');
-      ExProcess.Parameters.Add('--title');
+
+      ExProcess.Parameters.Add('-T');
       ExProcess.Parameters.Add('Make SFX Snapshot');
-      ExProcess.Parameters.Add('--execute'); //для xterm '-e'
+
+      ExProcess.Parameters.Add('-bg');
+      ExProcess.Parameters.Add('black');
+
+      ExProcess.Parameters.Add('-fg');
+      ExProcess.Parameters.Add('white');
+
+      ExProcess.Parameters.Add('-g');
+      ExProcess.Parameters.Add('105x35+0+0');
+
+      ExProcess.Parameters.Add('-e');
     end
     else
       ExProcess.Parameters.Add('-c');
@@ -251,7 +267,7 @@ begin
 
   //Запускаем sfx-creator.sh
   StartProcess('"' + ExtractFilePath(ParamStr(0)) + 'sfx-snapshot.sh" ' +
-    '"' + Edit1.Text + '" "' + Edit2.Text + '" "' + WorkDir + '" ' + Root, 'sakura');
+    '"' + Edit1.Text + '" "' + Edit2.Text + '" "' + WorkDir + '" ' + Root, 'xterm');
 end;
 
 end.

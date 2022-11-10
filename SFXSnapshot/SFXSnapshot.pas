@@ -2,8 +2,9 @@ program SFXSnapshot;
 
 {$mode objfpc}{$H+}
 
-uses {$IFDEF UNIX} {$IFDEF UseCThreads}
-  cthreads, {$ENDIF} {$ENDIF}
+uses
+ {$IFDEF UNIX} {$IFDEF UseCThreads}
+  cthreads,  {$ENDIF}  {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms,
   Unit1,
@@ -15,7 +16,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
 
 begin
   Application.Scaled := True;
-  Application.Title:='SFXSnapshot v0.3';
+  Application.Title := 'SFXSnapshot v0.4';
   RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);

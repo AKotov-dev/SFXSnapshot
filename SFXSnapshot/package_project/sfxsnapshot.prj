@@ -2,10 +2,10 @@
 name=sfxsnapshot
 
 [VERSION]
-version=0.3
+version=0.4
 
 [RELEASE]
-release=0.mrx8
+release=0.mrx9
 
 [GROUP]
 group=Applications/File
@@ -32,7 +32,7 @@ urlcopy=https://github.com/AKotov-dev/SFXSnapshot
 license=GPLv3
 
 [DEPS]
-deps=zstd sakura
+deps=zstd xterm gtk2
 
 [META]
 meta=0
@@ -68,20 +68,25 @@ programname=SFXSnapshot
 devtool=Lazarus
 
 [TOOLVERSION]
-toolversion=2.0.10
+toolversion=2.2.0
 
 [INFO]
 0=Creating SFX snapshots of files and folders
 1=The program works with the "makeself" script and uses "zstd" compression
 2=makeself: https://github.com/megastep/makeself
 3=
-4=v0.3
-5=+ support Plasma Global Scale
-6=+ sfx-snapshot.sh WORK_DIR correction
-7=
-8=v0.2
-9=+ makeself-v2.4.5
-10=+ additional launch via pkexec
-11=+ saving and loading a list from a file (*.lst)
+4=v0.4
+5=+ Recompilation in Lazarus 2.2.0
+6=+ Replacing sakura terminal with xterm (bug: https://github.com/dabisu/sakura/issues/16)
+7=+ Release for Mageia-9 and higher
+8=
+9=v0.3
+10=+ support Plasma Global Scale
+11=+ sfx-snapshot.sh WORK_DIR correction
 12=
-13=v0.1 - first release
+13=v0.2
+14=+ makeself-v2.4.5
+15=+ additional launch via pkexec
+16=+ saving and loading a list from a file (*.lst)
+17=
+18=v0.1 - first release
