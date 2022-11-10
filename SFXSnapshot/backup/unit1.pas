@@ -112,7 +112,7 @@ begin
       ExProcess.Parameters.Add('white');
 
       ExProcess.Parameters.Add('-g');
-      ExProcess.Parameters.Add('110x35+0+0');
+      ExProcess.Parameters.Add('105x35+0+0');
 
       ExProcess.Parameters.Add('-e');
     end
